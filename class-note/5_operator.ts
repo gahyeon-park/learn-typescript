@@ -29,7 +29,7 @@ logMessageB(100);
 
 //////////////////////////////////////////////////////////////////////////
 
-interface Worker {
+interface People {
   name: string;
   age: number;
 }
@@ -39,6 +39,18 @@ interface Designer {
   skill: string;
 }
 
-function askSomeone(someone: Designer | Worker) {
+function askSomeoneA(someone: Designer | People) {
   return someone.name;
 }
+
+//////////////////////////////////////////////////////////////////////////
+// 인터섹션 타입(&)
+function askSomeoneB(someone: Designer & People) {  // Designer와 People 인터페이스의 합집합인 셈..
+  return someone.skill;
+}
+
+askSomeoneA({ name: '디자이너', skill: '웹디자인' });
+askSomeoneA({ name: '작업자', age: 30 });
+
+askSomeoneB({ name: '디자이너', skill: '웹디자인' });  // 에러: Designer와 People의 속성이 모두 있어야 함.
+askSomeoneB({ name: '작업자', age: 30 }); // 에러: Designer와 People의 속성이 모두 있어야 함.
