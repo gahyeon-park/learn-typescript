@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,  // 자바스크립트에서 TS 기능을 쓰겠다. @ts-check
+    "noImplicitAny": true  // 모든 타입에서 최소한 any 타입이라도 써야함
+  }
+}
