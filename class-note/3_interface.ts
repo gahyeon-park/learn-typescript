@@ -58,7 +58,7 @@ Object.keys(obj).forEach(function (value) { // [TS] (parameter) value: string
   
 })
 
-// 인터페이스 확장
+// 인터페이스 확장 (↔ type은 확장이 안됨 ★)
 interface Person {
   name: string;
   age: number;
