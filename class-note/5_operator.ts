@@ -26,3 +26,19 @@ function logMessageB(value: string | number) {
 
 logMessageB("test");
 logMessageB(100);
+
+//////////////////////////////////////////////////////////////////////////
+
+interface Worker {
+  name: string;
+  age: number;
+}
+
+interface Designer {
+  name: string;
+  skill: string;
+}
+
+function askSomeone(someone: Designer | Worker) {
+  return someone.name;
+}
