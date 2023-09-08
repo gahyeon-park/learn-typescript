@@ -4,10 +4,10 @@ interface TodoInterface {
   done: boolean;
 }
 
-let todoItems: object[];
+let todoItems: { id: number; title: string; done: boolean }[];
 
 // api
-function fetchTodoItems(): object[] {
+function fetchTodoItems(): { id: number; title: string; done: boolean }[] {
   const todos = [
     { id: 1, title: '안녕', done: false },
     { id: 2, title: '타입', done: false },
@@ -22,7 +22,7 @@ function fetchTodos(): object[] {
   return todos;
 }
 
-function addTodo(todo: object): void {
+function addTodo(todo: { id: number; title: string; done: boolean }): void {
   todoItems.push(todo);
 }
 
@@ -30,7 +30,10 @@ function deleteTodo(index: number): void {
   todoItems.splice(index, 1);
 }
 
-function completeTodo(index: number, todo: object): void {
+function completeTodo(
+  index: number,
+  todo: { id: number; title: string; done: boolean }
+): void {
   todo.done = true;
   todoItems.splice(index, 1, todo);
 }
