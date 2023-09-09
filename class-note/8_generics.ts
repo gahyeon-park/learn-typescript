@@ -7,7 +7,7 @@
 // logText('hello');
 // logText(true);
 
-function logGeneric<T>(text:T): T {
+function logGeneric<T>(text:T): T {  // 함수에 정의한 제네릭 타입을 파라미터의 타입으로 쓰고, 그 값을 반환값에도 쓰겠다.
   console.log(text);
   return text;
 }
@@ -31,3 +31,4 @@ function logUnion(text: string | number) {
 const a = logUnion('a');
 a.split();  // 에러
 logUnion(10);
+
