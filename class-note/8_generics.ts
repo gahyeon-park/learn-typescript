@@ -33,3 +33,9 @@ const a = logUnion('a');
 a.split();  // 에러
 logUnion(10);
 
+
+// 인터페이스에 제네릭을 선언하는 방법
+interface Dropdown<T> {
+  value: T;
+  selected: boolean;
+}
