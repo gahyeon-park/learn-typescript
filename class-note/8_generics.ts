@@ -43,13 +43,28 @@ interface Dropdown<T> {
 const dropdown: Dropdown<string> = { value: '선택지1', selected: false };
 
 
-// 제네릭의 타입 제한
-function logTextLength<T>(text: T[]): T[] {
-  console.log(text.length);
-  text.forEach(function (t) {
-    console.log(t);
-  })
+// 제네릭의 타입 제한 1
+// function logTextLength<T>(text: T[]): T[] {
+//   console.log(text.length);
+//   text.forEach(function (t) {
+//     console.log(t);
+//   })
+//   return text;
+// }
+
+// logTextLength<string>(['Hello']);
+
+
+// 제네릭의 타입 제한 2 - 정의된 타입 이용하기
+interface LengthType { 
+  length: number;
+}
+
+function logTextLength<T extends LengthType>(text: T): T {  // 제네릭으로 어떤 타입이든 받을 수 있지만, LengthType 인터페이스를 상속함으로써 length 속성을 가져야 하는 제한을 갖게 된다.
+  text.length;
   return text;
 }
 
-logTextLength<string>(['Hello']);
+logTextLength('a'); // 문자열 객체는 기본적으로 length 속성을 가지므로 통과!
+logTextLength(100); // 숫자 객체는 length 속성이 없으므로 에러 !
+logTextLength({ length: 100 });
