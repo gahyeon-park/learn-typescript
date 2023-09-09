@@ -39,3 +39,5 @@ interface Dropdown<T> {
   value: T;
   selected: boolean;
 }
+
+const dropdown: Dropdown = { value: '선택지1', selected: false };
