@@ -1,16 +1,38 @@
-const emails = [
+interface Email {
+  value: string;
+  selected: boolean;
+}
+
+interface ProductNumber {
+  value: number;
+  selected: boolean;
+}
+
+// const emails: Array<{ value: string; selected: boolean }> = [
+//   { value: 'naver.com', selected: true },
+//   { value: 'gmail.com', selected: false },
+//   { value: 'hanmail.net', selected: false },
+// ];
+
+// const numberOfProducts: { value: number; selected: boolean }[] = [
+//   { value: 1, selected: true },
+//   { value: 2, selected: false },
+//   { value: 3, selected: false },
+// ];
+
+const emails: Email[] = [
   { value: 'naver.com', selected: true },
   { value: 'gmail.com', selected: false },
   { value: 'hanmail.net', selected: false },
 ];
 
-const numberOfProducts = [
+const numberOfProducts: ProductNumber[] = [
   { value: 1, selected: true },
   { value: 2, selected: false },
   { value: 3, selected: false },
 ];
 
-function createDropdownItem(item) {
+function createDropdownItem(item: Email | ProductNumber) {
   const option = document.createElement('option');
   option.value = item.value.toString();
   option.innerText = item.value.toString();
@@ -22,5 +44,11 @@ function createDropdownItem(item) {
 emails.forEach(function (email) {
   const item = createDropdownItem(email);
   const selectTag = document.querySelector('#email-dropdown');
+  selectTag.appendChild(item);
+});
+
+numberOfProducts.forEach(function (product) {
+  const item = createDropdownItem(product);
+  const selectTag = document.querySelector('#product-dropdown');
   selectTag.appendChild(item);
 });
