@@ -68,3 +68,18 @@ function logTextLength<T extends LengthType>(text: T): T {  // 제네릭으로 �
 logTextLength('a'); // 문자열 객체는 기본적으로 length 속성을 가지므로 통과!
 logTextLength(100); // 숫자 객체는 length 속성이 없으므로 에러 !
 logTextLength({ length: 100 });
+
+
+// 제네릭 타입 제한 3 - keyof
+interface ShoppingItem {
+  name: string;
+  price: number;
+  stock: number;
+}
+
+function getShoppingItemOption<T extends keyof ShoppingItem>(itemOption: T): T { // ShoppingItem 인터페이스의 key이름(name, price, stock)으로 제네릭을 제한.
+  return itemOption;
+}
+
+getShoppingItemOption(100); // 에러
+getShoppingItemOption("price");
