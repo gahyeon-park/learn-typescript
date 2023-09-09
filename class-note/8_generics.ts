@@ -40,4 +40,4 @@ interface Dropdown<T> {
   selected: boolean;
 }
 
-const dropdown: Dropdown = { value: '선택지1', selected: false };
+const dropdown: Dropdown<string> = { value: '선택지1', selected: false };
