@@ -12,8 +12,9 @@ function logGeneric<T>(text:T): T {  // 함수에 정의한 제네릭 타입을 
   return text;
 }
 
-logGeneric(10); // 파라미터의 타입을 호출할 때 인자의 타입을 (추론해서) 지정하면서 넘김.
-logGeneric<string>('hi'); 
+const str = logGeneric<string>('hi');
+str.split('');
+const flag = logGeneric<boolean>(true);
 
 // ※ 기존 문법과 제네릭의 차이점 !
 // 인자로 받는 타입이 하나로 정해져 있지 않을 경우, 파라미터의 타입을 any 또는 유니온 타입(string | number)으로 줄 수 있는데
