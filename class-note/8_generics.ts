@@ -1,0 +1,33 @@
+// function logText(text) {
+//   console.log(Text);
+//   return text;
+// }
+
+// logText(10);
+// logText('hello');
+// logText(true);
+
+function logGeneric<T>(text:T): T {
+  console.log(text);
+  return text;
+}
+
+logGeneric(10); // 파라미터의 타입을 호출할 때 인자의 타입을 (추론해서) 지정하면서 넘김.
+logGeneric<string>('hi'); 
+
+// ※ 기존 문법과 제네릭의 차이점 !
+// 인자로 받는 타입이 하나로 정해져 있지 않을 경우, 파라미터의 타입을 any 또는 유니온 타입(string | number)으로 줄 수 있는데
+// 이 경우, 인자로 받을 때는 문제없이 받을 수 있지만 그 값을 활용할 때는 타입이 하나로 명확하게 고정되는 게 아니기 때문에
+// 해당 인자의 API를 인텔리센스에서 제공하지 않는다. 
+// 또 유니온 타입으로 인자를 받는 함수의 경우 파라미터를 그대로 반환한다고 했을 때
+// 반환값의 타입도 마찬가지로 한가지 타입으로 지정할 수 없기 때문에 
+// 반환값의 인텔리센스에서는 유니온 타입에 정의한 두 개 이상의 타입의 교집합에 해당하는 API만 출력된다.
+
+function logUnion(text: string | number) {
+  console.log(text);
+  return text;
+}
+
+const a = logUnion('a');
+a.split();  // 에러
+logUnion(10);
