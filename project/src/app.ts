@@ -1,5 +1,3 @@
-// @ts-check → TS 랭귀지서버를 실행합니다.
-
 // utils
 function $(selector) {
   return document.querySelector(selector);
