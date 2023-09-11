@@ -34,3 +34,43 @@ type UpdateProduct = Partial<Product>;
 function updateProductItem(productItem: Partial<Product>) { 
   
 }
+
+
+// D. 유틸리티 타입 구현하기 - 인터페이스와 type만으로 Partial처럼 구현하기
+interface UserProfile {
+  username: string;
+  email: string;
+  profilePhotoUrl: string;
+}
+
+// # 방법1 
+type UserProfileUpdate = {
+  username?: UserProfile['username'];
+  email?: UserProfile['email'];
+  profilePhotoUrl?: UserProfile['profilePhotoUrl'];
+}
+
+
+// # 방법2 - Mapped 타입
+type UserProfileUpdate = {
+  [p in 'username' | 'email' | 'profilePhotoUrl']?: UserProfile[p]
+}
+// [p in 'username' | 'email' | 'profilePhotoUrl'] → JS의 for .. in 구문처럼 작동함 (모든 열거 가능한 속성에 대해 반복)
+
+
+// # 방법3 - #2를 keyof 키워드로 좀더 축약한 버전
+type UserProfileKeys = keyof UserProfile;
+type UserProfileUpdate = {
+  [p in keyof UserProfile]?: UserProfile[p]
+}
+
+// ★ updateProfile 함수에서는 UserProfile에 있는 속성을 다 받는 것이 아닌, 선택적으로 받을 수 있어야 한다.
+function updateProfile(profile) {
+  
+}
+
+// #4 (위 #1 ~ #3은 하나의 인터페이스에 국한한 Partial 기능이었고)
+// 제네릭을 사용해 어떤 타입을 받든, 그 타입의 속성들을 선택적으로 받을 수 있는 진짜 Partial 기능 구현!
+type Subset<T> = {
+  [p in keyof T]?: T[p]
+}
