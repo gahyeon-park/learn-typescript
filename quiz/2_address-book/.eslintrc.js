@@ -23,9 +23,9 @@ module.exports = {
         arrowParens: 'avoid',
       },
     ],
-    '@typescript-eslint/no-explicit-any': 'off',
-    "@typescript-eslint/explicit-function-return-type": 'off',
-    'prefer-const': 'off',
+    '@typescript-eslint/no-explicit-any': 'warn',
+    "@typescript-eslint/explicit-function-return-type": 'warn',
+    'prefer-const': 'warn',
   },
   parserOptions: {
     parser: '@typescript-eslint/parser',
