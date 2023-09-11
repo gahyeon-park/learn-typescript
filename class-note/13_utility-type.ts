@@ -55,7 +55,8 @@ type UserProfileUpdate = {
 type UserProfileUpdate = {
   [p in 'username' | 'email' | 'profilePhotoUrl']?: UserProfile[p]
 }
-// [p in 'username' | 'email' | 'profilePhotoUrl'] → JS의 for .. in 구문처럼 작동함 (모든 열거 가능한 속성에 대해 반복)
+// [p in 'username' | 'email' | 'profilePhotoUrl'] 
+// └> JS의 for .. in 구문처럼 작동함 (모든 열거 가능한 속성에 대해 반복)
 
 
 // # 방법3 - #2를 keyof 키워드로 좀더 축약한 버전
@@ -71,6 +72,6 @@ function updateProfile(profile) {
 
 // #4 (위 #1 ~ #3은 하나의 인터페이스에 국한한 Partial 기능이었고)
 // 제네릭을 사용해 어떤 타입을 받든, 그 타입의 속성들을 선택적으로 받을 수 있는 진짜 Partial 기능 구현!
-type Subset<T> = {
+type Subset<T> = { 
   [p in keyof T]?: T[p]
 }
