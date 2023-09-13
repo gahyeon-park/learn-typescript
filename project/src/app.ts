@@ -1,3 +1,9 @@
+// 라이브러리 로딩
+// import 변수명 from '라이브러리 이름';
+import axios from 'axios';
+import Chart from 'chart.js/auto';
+// import * as Chart from 'chart.js';
+
 // utils
 function $(selector: string) {
   return document.querySelector(selector);
@@ -174,7 +180,7 @@ async function setupData() {
 }
 
 function renderChart(data: any, labels: any) {
-  var ctx = $('#lineChart').getContext('2d');
+  var ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
   new Chart(ctx, {
