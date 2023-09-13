@@ -4,6 +4,7 @@
     "target": "ES5",
     "outDir": "./built",
     "moduleResolution": "node",
+    "lib": ["ES2015", "DOM", "DOM.Iterable"]
   },
   "include": ["./src/**/*"] // 프로젝트를 기준으로 어떤 폴더를 대상으로 타입스크립트를 컴파일시킬 것인지
 }
