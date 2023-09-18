@@ -47,7 +47,6 @@ function createSpinnerElement(id: string) {
 
 // state
 let isDeathLoading = false;
-const isRecoveredLoading = false;
 
 // api
 function fetchCovidSummary(): Promise<AxiosResponse<ICovidSummary>> {
@@ -196,7 +195,9 @@ async function setupData() {
 }
 
 function renderChart(data: number[], labels: string[]) {
-  const ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d');
+  const lineChart = $('#lineChart') as HTMLCanvasElement;
+  // const ctx = ($('#lineChart') as HTMLCanvasElement).getContext('2d');
+  const ctx = lineChart.getContext('2d');
   Chart.defaults.color = '#f5eaea';
   Chart.defaults.font.family = 'Exo 2';
   new Chart(ctx, {
