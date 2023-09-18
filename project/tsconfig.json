@@ -6,7 +6,8 @@
     "moduleResolution": "node",
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
     "noImplicitAny": true,
-    "typeRoots": ["./node_modules/@types", "types"] // default값: "./node_modules/@types"
+    "typeRoots": ["./node_modules/@types", "types"], // default값: "./node_modules/@types"
+    "strict": true,
   },
   "include": ["./src/**/*"] // 프로젝트를 기준으로 어떤 폴더를 대상으로 타입스크립트를 컴파일시킬 것인지
 }
